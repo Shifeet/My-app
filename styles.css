@@ -19,10 +19,10 @@ body {
 
 /* Container */
 .container {
-    width: 80%;
+    width: 90%; /* Make container width responsive */
     margin: 20px auto;
     background-color: var(--container-bg-color);
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0 0 10px var(--shadow-color);
 }
@@ -30,24 +30,26 @@ body {
 /* Header */
 header {
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
-    text-align: left;
+    text-align: center;
 }
 
 .header-content {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
 }
 
 .header-left, .header-right {
-    flex: 1;
+    flex: 1 1 45%; /* Allow left and right sections to be smaller on mobile */
+    text-align: left;
 }
 
 .header-center {
-    flex: 2;
+    flex: 2 1 100%; /* Center section takes full width */
     text-align: center;
 }
 
@@ -79,42 +81,42 @@ header h2, header h3, header h4 {
     }
 
     .title, .subtitle {
-        font-size: 1rem;
+        font-size: 0.8rem;
         margin: 10px 0;
     }
 
     .form-table td {
         padding: 5px;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 
     input[type="text"], input[type="tel"], input[type="date"], textarea {
         width: 90%;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         padding: 5px;
     }
 
     textarea {
-        height: 100px;
+        height: 80px;
     }
 }
 
 /* Form Table */
 .form-table {
     width: 100%;
-    border-spacing: 10px;
+    border-spacing: 5px;
     border-collapse: collapse;
 }
 
 .form-table td {
-    padding: 10px;
+    padding: 5px;
     border: 1px solid var(--border-color);
 }
 
 input[type="text"], input[type="tel"], input[type="date"], select, textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
+    width: 100%; /* Ensure full width on mobile */
+    padding: 8px;
+    font-size: 1rem; /* Slightly larger font for readability */
     margin-top: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -122,29 +124,34 @@ input[type="text"], input[type="tel"], input[type="date"], select, textarea {
 
 /* Signature Styles */
 .signature-container {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 canvas {
     border: 1px solid #000;
     background-color: #f0f0f0;
+    width: 100%; /* Full width on mobile */
+    height: 150px;
 }
 
 /* Passenger Table */
 .passenger-table {
     width: 100%;
-    border-spacing: 10px;
+    border-spacing: 5px;
     border-collapse: collapse;
 }
 
 .passenger-row {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
 .passenger-info {
     display: flex;
     flex-direction: column;
+    width: 48%; /* Allow two items per row on small screens */
+    margin-bottom: 10px;
 }
 
 /* Buttons */
@@ -156,6 +163,7 @@ button {
     cursor: pointer;
     font-size: 1rem;
     border-radius: 5px;
+    width: 100%; /* Full width for buttons on mobile */
 }
 
 button:hover {
@@ -164,6 +172,60 @@ button:hover {
 
 .buttons {
     display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    /* Container and Form Inputs */
+    .container {
+        width: 95%; /* Reduce container width */
+        padding: 10px;
+    }
+
+    .form-table td, .passenger-info {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    /* Make inputs and textareas full width */
+    input[type="text"], input[type="tel"], input[type="date"], select, textarea {
+        width: 100%;
+        padding: 10px;
+    }
+
+    /* Signature Pad */
+    canvas {
+        width: 100%; /* Make signature pad responsive */
+        height: 150px;
+    }
+
+    /* Buttons */
+    button {
+        padding: 10px;
+        width: 100%;
+    }
+
+    .passenger-row {
+        flex-direction: column; /* Stack passengers vertically on mobile */
+    }
+
+    .passenger-info {
+        width: 100%; /* Make passenger input fields full width */
+    }
+
+    .header-content {
+        flex-direction: column; /* Stack header elements on small screens */
+        align-items: center;
+    }
+
+    .header-left, .header-right {
+        flex: 1 1 100%;
+    }
+
+    .header-center {
+        flex: 1 1 100%;
+    }
 }
